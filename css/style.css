@@ -12,16 +12,40 @@ body {
   align-items: center;
 }
 
+.container {
+  width: 100vw;
+  border: 2px solid blue;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
 .grid-div {
   width: calc(100%/16);
   aspect-ratio: 1;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
-.container {
+.grid-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100vw;
+  width: 75%;
   max-width: 900px;
+  min-width: 350px;
   border: 2px solid red;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  border: 1px solid green;
+}
+
+button {
+  width: 100px;
 }
