@@ -2,8 +2,14 @@ const gridContainer = document.querySelector(".grid-container");
 const dimensionBtn = document.querySelector(".dimension-btn");
 let divNumber = 16; //no. of divs in grid
 const colorBtn = document.querySelector(".color-btn");
-
+const resetBtn = document.querySelector(".reset-btn");
 renderGrid(divNumber);
+
+resetBtn.addEventListener("click", () => {
+  document.querySelectorAll(".grid-div").forEach(div => {
+    div.style.backgroundColor = "white";
+  })
+})
 
 colorBtn.addEventListener("click", () => {
   if (colorBtn.textContent === "COLORFUL MODE") {
@@ -44,15 +50,17 @@ function renderGrid(divNumber) {
     gridContainer.appendChild(gridDiv);
   }
 }
-
+function removeGrid() {
+  document.querySelectorAll(".grid-div").forEach(div => {
+    div.remove();
+  })
+}
 dimensionBtn.addEventListener("click", () => {
   divNumber = prompt("Enter new dimension (max value = 100)");
   while (divNumber > 100) {
     alert("New dimension cannot exceed 100");
     divNumber = prompt("Enter new dimension (max value = 100)");
   }
-  document.querySelectorAll(".grid-div").forEach(div => {
-    div.remove();
-  })
+  removeGrid();
   renderGrid(divNumber);
 })     
