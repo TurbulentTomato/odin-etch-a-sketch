@@ -8,6 +8,7 @@ renderGrid(divNumber);
 resetBtn.addEventListener("click", () => {
   document.querySelectorAll(".grid-div").forEach(div => {
     div.style.backgroundColor = "white";
+    div.classList.remove("colored");
   })
 })
 
