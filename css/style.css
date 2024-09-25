@@ -46,6 +46,8 @@ body {
 
 button {
   width: 100px;
+  border-radius: 3px;
+  border: 2px solid;
 }
 
 h1 {
@@ -54,7 +56,6 @@ h1 {
 }
 
 .text {
-  /* margin: 50px auto auto auto; */
   text-align: center;
   @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
   font-family: "Gloria Hallelujah", cursive;
