@@ -17,6 +17,7 @@ colorBtn.addEventListener("click", () => {
   } else {
     colorBtn.textContent = "COLORFUL MODE";
   }
+
 })
 
 function getColor() {
@@ -25,11 +26,9 @@ function getColor() {
     const red = Math.floor(Math.random() * 266);
     const green = Math.floor(Math.random() * 266);
     const blue = Math.floor(Math.random() * 266);
-    const alpha = Math.round(Math.random() * 100) / 100;
-    color = `rgba(${red},
-                  ${green},
-                  ${blue},
-                  ${alpha})`;
+    color = `rgb(${red},
+                 ${green},
+                 ${blue})`;
   }
   return color;
 }
@@ -39,7 +38,15 @@ gridContainer.addEventListener("mouseover", (event) => {
   if (event.target === gridContainer) {
     return;
   }
+  if (Array.from(event.target.classList).includes("colored")) {
+    if (event.target.style.opacity !== "1") {
+      event.target.style.opacity = 0.1 + Number(event.target.style.opacity);
+    }
+    return;
+  }
   event.target.style.backgroundColor = getColor();
+  event.target.style.opacity = 0.1;
+  event.target.classList.add("colored");
 })
 
 function renderGrid(divNumber) {
@@ -50,17 +57,19 @@ function renderGrid(divNumber) {
     gridContainer.appendChild(gridDiv);
   }
 }
+
 function removeGrid() {
   document.querySelectorAll(".grid-div").forEach(div => {
     div.remove();
   })
 }
+
 dimensionBtn.addEventListener("click", () => {
-  divNumber = prompt("Enter new dimension (max value = 100)");
+  divNumber = prompt("Enter new dimension (max value = 100)", 16);
   while (divNumber > 100) {
-    alert("New dimension cannot exceed 100");
+    alert("New dimension cannot exceed 100", 16);
     divNumber = prompt("Enter new dimension (max value = 100)");
   }
   removeGrid();
   renderGrid(divNumber);
-})     
+}) 
