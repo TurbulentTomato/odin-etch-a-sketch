@@ -67,9 +67,9 @@ function removeGrid() {
 
 dimensionBtn.addEventListener("click", () => {
   divNumber = prompt("Enter new dimension (max value = 100)", 16);
-  while (divNumber > 100) {
-    alert("New dimension cannot exceed 100", 16);
-    divNumber = prompt("Enter new dimension (max value = 100)");
+  while (divNumber > 100 || divNumber < 1) {
+    alert("Minimum value = 1; Maximum value= 100");
+    divNumber = prompt("Enter new dimension (max value = 100)", 16);
   }
   removeGrid();
   renderGrid(divNumber);
